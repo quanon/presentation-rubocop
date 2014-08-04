@@ -1,0 +1,130 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    title Rubocop でコード治安維持
+
+    // build:css styles/styles.css
+    //- Check out 'src/bower_components/prism/themes/' for available themes
+    link(rel='stylesheet', type='text/css', href='bower_components/prism/themes/prism-tomorrow.css')
+    link(rel='stylesheet', type='text/css', href='styles/main.css')
+    // endbuild
+
+  body
+
+    article
+
+      section
+        h1 Rubocop で <br /> コード治安維持
+
+      section
+        h2 Rubocop とは
+        h3 Ruby のコードが規約(<a href="https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md">ruby-style-guide</a>) に<br />準拠しているかを解析してくれるツール
+
+      section
+        h2 Ruby という言語の光
+        h3 柔軟性に富んでいる！
+        h4.bullet
+          ul
+            li 「シンプルさと高い生産性を備えています。」
+            li 「エレガントな文法を持ち、自然に読み書きができます。」
+
+      section
+        h2 Ruby という言語の影
+        h3 柔軟性に富んでいる！
+        h4.bullet
+          ul
+            li 人によって書き方がまちまち
+            li 黒魔術もあるよ
+
+      section
+        h2 (例) 補導される if 文
+        pre
+          code.language-javascript.
+            if flag1 and flag2 then
+              puts 'Hello World!';
+            end
+        h4.bullet
+          ul
+            li 4 offenses detected
+            li Favor modifier if usage when having a single-line body.<br>後置 if を使え！
+            li Never use then for multi-line if.<br>複数行の if 文で then を使うな！
+            li Use && instead of and.<br> and じゃなくて && を使え！
+            li Do not use semicolons to terminate expressions.<br> 文末にセミコロンを使うな！
+
+      section
+        img.jojo(src='images/esidisi1.jpg', style='width: 600px;')
+
+      section
+        h2 (例) お利口な if 文
+        pre
+          code.language-javascript.
+            puts 'Hello World!' if flag1 && flag2
+        h4.bullet
+          ul
+            li no offenses detected
+
+      section
+        img.jojo(src='images/esidisi2.jpg', style='width: 600px;')
+
+      section
+        h2 導入するメリット
+        h3 Ruby の習熟度を問わず、コーディングスタイルを矯正できる
+        h4.bullet
+          ul
+            li 初心者 … Ruby の作法を身に付ける
+            li 中級者以上 … 我流のスタイルを矯正する
+
+      section
+        h2 導入するメリット
+        h3 未使用のローカル変数を検出してくれる
+
+
+      section
+        h2 やたらとうるさい
+        h3 設定ファイル .rubocop.yml で警告内容を調整する
+        pre
+          code.language-javascript.
+            inherit_from: ../.rubocop.yml
+
+            Style/Encoding:
+              Enabled: false
+
+            Metrics/LineLength:
+              Max: 99
+
+      section
+        h2 既存のプロジェクトに<br>入れたら大変なことに
+        h3 rubocop --auto-gen-config
+        h4.bullet
+          ul
+            li 検出された違反を全て無効化する設定 (.rubocop-todo.yml) を<br>自動的に吐き出してくれる
+            li .rubocop.yml で .rubocop-todo.yml を継承すると<br>違反が検出されなくなる
+            li 違反するコードを直して、<br>違反を無効化する設定を少しずつ減らしていく
+
+      section
+        h2 自動化したい
+        h3.bullet
+          ul
+            li Guard (guard-rubocop)
+            li Jenkins (rubocop-checkstyle_formatter)
+
+      section
+        h2 きれいなコードで<br>快適 Ruby 生活
+        img.avatar(src='images/nikoni.png')
+        h2 Thank you!
+
+    // build:js scripts/scripts.js
+    script(src='bower_components/bespoke.js/dist/bespoke.min.js')
+    script(src='bower_components/bespoke-keys/dist/bespoke-keys.min.js')
+    script(src='bower_components/bespoke-touch/dist/bespoke-touch.min.js')
+    script(src='bower_components/bespoke-bullets/dist/bespoke-bullets.min.js')
+    script(src='bower_components/bespoke-scale/dist/bespoke-scale.min.js')
+    script(src='bower_components/bespoke-hash/dist/bespoke-hash.min.js')
+    script(src='bower_components/bespoke-progress/dist/bespoke-progress.min.js')
+    script(src='bower_components/bespoke-state/dist/bespoke-state.min.js')
+    script(src='bower_components/bespoke-forms/dist/bespoke-forms.min.js')
+    script(src='bower_components/prism/prism.js')
+    script(src='scripts/main.js')
+    // endbuild
